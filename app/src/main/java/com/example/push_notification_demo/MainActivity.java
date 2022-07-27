@@ -74,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         NCMBQuery<NCMBInstallation> query = new NCMBQuery<>("installation");
         query.whereEqualTo("channels", "Ch1");
         push.setSearchCondition(query);
+        try {
+            push.setTarget(new JSONArray("[android]"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         push.setMessage("test SearchCondition");
         push.sendInBackground();
     }
